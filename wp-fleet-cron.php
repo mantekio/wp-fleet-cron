@@ -3,7 +3,7 @@
  * Plugin Name: WP Fleet Cron
  * Plugin URI:  https://github.com/mantekio/wp-fleet-cron
  * Description: Reliable wp-cron for WordPress running on more than one server. Runs cron in-process through WP-CLI, elects a single runner across the fleet with a shared database lock, and fails loudly when cron stalls.
- * Version:     0.1.0
+ * Version:     0.9.0
  * Author:      Jaafar Abazid
  * Author URI:  https://www.mantek.io
  * License:     GPL-2.0-or-later

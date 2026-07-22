@@ -78,7 +78,7 @@ The dashboard also shows a warning to admins when cron has gone stale, so a stal
 
 ## The write-up
 
-The reasoning behind this plugin, and the production story that led to it, is on the ManTek Insights blog (link once the post is published).
+The reasoning behind this plugin, and the production story that led to it, is written up here: [WordPress cron behind a load balancer](https://www.mantek.io/insights/wordpress-cron-load-balancer).
 
 ## License
 
