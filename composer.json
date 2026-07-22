@@ -1,0 +1,22 @@
+{
+    "name": "mantekio/wp-fleet-cron",
+    "description": "Reliable wp-cron for WordPress on more than one server: in-process through WP-CLI, a single runner elected by a shared database lock, and loud when it stalls.",
+    "type": "wordpress-muplugin",
+    "license": "GPL-2.0-or-later",
+    "keywords": ["wordpress", "wp-cron", "cron", "wp-cli", "load-balancer", "high-availability", "mu-plugin"],
+    "homepage": "https://github.com/mantekio/wp-fleet-cron",
+    "authors": [
+        {
+            "name": "Jaafar Abazid",
+            "email": "jaafar@mantek.io",
+            "homepage": "https://www.mantek.io"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "support": {
+        "issues": "https://github.com/mantekio/wp-fleet-cron/issues",
+        "source": "https://github.com/mantekio/wp-fleet-cron"
+    }
+}
