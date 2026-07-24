@@ -6,6 +6,8 @@ The usual cron fix, `DISABLE_WP_CRON` plus a request to `wp-cron.php`, quietly a
 
 WP Fleet Cron fixes both. It runs cron in-process through WP-CLI on every node, so there is no single box to lose, and it puts a shared database lock in front of the run, so only one node executes the due events each minute. When cron stalls, it says so out loud.
 
+> 📖 **Full write-up:** [WordPress cron behind a load balancer: fixing "Missed schedule"](https://www.mantek.io/insights/wordpress-cron-load-balancer)
+
 ## Why in-process
 
 Triggering cron with an HTTP request (a `wget` crontab, a Lambda, the loopback) sends that request through everything in front of your origin: a CDN that can serve the same fixed URL from cache without ever running PHP, a load balancer that can hand it to a draining node, and a web timeout that kills a long job half done. Running cron with WP-CLI makes no HTTP request at all. It boots WordPress in a normal PHP process and runs the due events straight against the database. None of that path is in the way.
@@ -78,7 +80,9 @@ The dashboard also shows a warning to admins when cron has gone stale, so a stal
 
 ## The write-up
 
-The reasoning behind this plugin, and the production story that led to it, is written up here: [WordPress cron behind a load balancer](https://www.mantek.io/insights/wordpress-cron-load-balancer).
+The full reasoning (why triggering cron over HTTP inherits every cache and load balancer in front of the origin, why the lock has to be shared rather than per-node, and the production story of the 6am story that never published) is in the write-up:
+
+**→ [WordPress cron behind a load balancer: fixing "Missed schedule"](https://www.mantek.io/insights/wordpress-cron-load-balancer)**
 
 ## Changelog
 
@@ -87,3 +91,7 @@ Every release is documented in the [changelog](https://github.com/mantekio/wp-fl
 ## License
 
 GPL-2.0-or-later.
+
+---
+
+Built and maintained by **[ManTek Technologies](https://www.mantek.io)**: WordPress + AWS at scale, for newsrooms and beyond.
