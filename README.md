@@ -80,6 +80,10 @@ The dashboard also shows a warning to admins when cron has gone stale, so a stal
 
 The reasoning behind this plugin, and the production story that led to it, is written up here: [WordPress cron behind a load balancer](https://www.mantek.io/insights/wordpress-cron-load-balancer).
 
+## Changelog
+
+Every release is documented in the [changelog](https://github.com/mantekio/wp-fleet-cron/blob/main/CHANGELOG.md), and the notes for each version are on the [releases page](https://github.com/mantekio/wp-fleet-cron/releases).
+
 ## License
 
 GPL-2.0-or-later.
