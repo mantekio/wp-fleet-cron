@@ -26,6 +26,19 @@ or install with Composer:
 composer require mantekio/wp-fleet-cron
 ```
 
+Composer installs it as a [`wordpress-muplugin`](https://github.com/composer/installers), which has two consequences worth knowing:
+
+- **Allow the installer plugin.** On a fresh project Composer blocks `composer/installers` until you permit it. Add this to your root `composer.json` (most WordPress-Composer stacks already have it):
+  ```json
+  { "config": { "allow-plugins": { "composer/installers": true } } }
+  ```
+- **Make sure it actually loads.** It installs into `wp-content/mu-plugins/wp-fleet-cron/` (a subfolder), and vanilla WordPress only auto-loads `*.php` placed *directly* in `mu-plugins/`, not in subfolders ([WordPress docs](https://developer.wordpress.org/advanced-administration/plugins/mu-plugins/)). Either rely on a mu-plugins autoloader (Bedrock and similar stacks ship one), drop the single file in place as above instead, or keep Composer and add a one-line loader directly in `mu-plugins/`:
+  ```php
+  <?php // wp-content/mu-plugins/fleet-cron-loader.php
+  require WPMU_PLUGIN_DIR . '/wp-fleet-cron/wp-fleet-cron.php';
+  ```
+  Pick one: with the dropped-in file and a loader both present, the plugin loads twice and PHP stops with a fatal error.
+
 ## Set up
 
 1. Turn off the loopback in `wp-config.php`:
